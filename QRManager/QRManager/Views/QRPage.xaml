@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             mc:Ignorable="d"
+             x:Class="QRManager.Views.QRPage">
+    <ContentPage.Content>
+        <Grid>
+
+            <Image Source="wallpaper.png" Aspect="AspectFill"/>
+            <BoxView Color="#CECECE" Opacity="0"/>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="Logoblanco.png" WidthRequest="150" HeightRequest="160" Margin="0,0 ,0,0"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <zxing:ZXingBarcodeImageView 
+                                BarcodeValue="{Binding TeamCode}"
+                                BarcodeFormat="QR_CODE"
+                                WidthRequest="400"
+                                HeightRequest="400"
+                                Margin="30,170"  >
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+
+                        <zxcm:EncodingOptions Width="500" Height="500" Margin="0" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+
+               
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+    

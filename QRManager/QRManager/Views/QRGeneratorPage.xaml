@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             x:Class="QRManager.Views.QRGeneratorPage"
+             Title="Generator Page"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="wallpaper.png" Aspect="AspectFill"/>
+        <BoxView Color="#CECECE" Opacity="0"/>
+        <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Source="Logoblanco.png" WidthRequest="140" HeightRequest="150" Margin="0"/>
+            <StackLayout Grid.Row="1" Padding="30,0">
+                <Entry TextColor="White"
+                       Placeholder="Nombre" PlaceholderColor="Silver"
+                       Text="{Binding Nombre}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start"
+                       Margin="0,5"/>
+            <Entry TextColor="White"
+                       Placeholder="Compañia" PlaceholderColor="Silver"
+                       Text="{Binding Compañia}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,2"/>
+            <Entry TextColor="White"
+                       Placeholder="Cargo" PlaceholderColor="Silver"
+                       Text="{Binding Cargo}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,2"/>
+            <Entry TextColor="White"
+                       Placeholder="Telefono" PlaceholderColor="Silver"
+                       Text="{Binding Telefono}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,2"/>
+            <Entry TextColor="White"
+                       Placeholder="Correo" PlaceholderColor="Silver"
+                       Text="{Binding Correo}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,2"/>                
+            <Entry TextColor="White"
+                       Placeholder="Dirección" PlaceholderColor="Silver"
+                       Text="{Binding Direccion}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,2"/>
+            <Entry TextColor="White"
+                       Placeholder="Dirección" PlaceholderColor="Silver"
+                       Text="{Binding Direccion2}"
+                       Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
+                       Margin="0,3"/>
+            <Button Margin="8" Text="Genera tu codigo QR"  CornerRadius="23" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White"
+                    Command="{Binding GenerateQRCodeCommand}" />
+                    <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+            </ActivityIndicator>
+           </StackLayout>
+        </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>
