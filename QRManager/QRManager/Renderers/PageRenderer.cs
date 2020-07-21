@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QRManager.Renderers
+namespace QRManager.iOS.Renderers
 {
-    class PageRenderer
+   class PageRenderer 
     {
     }
 }
