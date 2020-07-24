@@ -48,7 +48,7 @@
                     </Entry>
                     <StackLayout
                         Orientation="Horizontal">
-                        <Label Margin="0,5" VerticalOptions="Center" Text="Recordar Usuario" TextColor="White">
+                        <Label Margin="0,5" VerticalOptions="Center" Text="Recordar Información" TextColor="White">
                         </Label>
                         <Switch
                            IsToggled="{Binding IsRemembered, Mode=TwoWay}"
