@@ -55,7 +55,7 @@
                        Text="{Binding Direccion2}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,3"/>
-            <Button Margin="8" Text="Genera tu codigo QR"  CornerRadius="23" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White"
+            <Button Margin="8" Text="  Genera tu codigo QR  "  CornerRadius="23" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White"
                     Command="{Binding GenerateQRCodeCommand}" />
                     <ActivityIndicator
                     IsRunning="{Binding IsRunning, Mode=TwoWay}"

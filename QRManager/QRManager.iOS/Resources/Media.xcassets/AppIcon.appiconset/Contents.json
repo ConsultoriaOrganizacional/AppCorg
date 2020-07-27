@@ -1,7 +1,6 @@
 {
   "images": [
     {
-      "filename": "Logo40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
@@ -12,7 +11,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "Logo58.png",
+      "filename": "Icon-Small@2x.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
@@ -23,7 +22,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "Logo80 1.png",
+      "filename": "Icon-Small-40@2x.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
@@ -34,7 +33,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "Logo120 1.png",
+      "filename": "Icon-60@2x.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
@@ -45,7 +44,6 @@
       "idiom": "iphone"
     },
     {
-      "filename": "Logo20.png",
       "size": "20x20",
       "scale": "1x",
       "idiom": "ipad"
@@ -56,7 +54,6 @@
       "idiom": "ipad"
     },
     {
-      "filename": "Webp.net-resizeimage.png",
       "size": "29x29",
       "scale": "1x",
       "idiom": "ipad"
