@@ -4,7 +4,8 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              x:Class="QRManager.Views.QRGeneratorPage"
-             Title="Generator Page"
+             Title="GeneratorQR Page"
+             BackgroundColor= "{DynamicResource background}" 
              NavigationPage.HasNavigationBar="False">
     <Grid>
         <Image Source="wallpaper.png" Aspect="AspectFill"/>
@@ -19,38 +20,38 @@
 
             <Image Grid.Row="0" Source="Logoblanco.png" WidthRequest="140" HeightRequest="150" Margin="0"/>
             <StackLayout Grid.Row="1" Padding="30,0">
-                <Entry TextColor="White"
-                       Placeholder="Nombre" PlaceholderColor="Silver"
+                <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Nombre" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Nombre}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start"
                        Margin="0,5"/>
-            <Entry TextColor="White"
-                       Placeholder="Compañia" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Compañia" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Compañia}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="White"
-                       Placeholder="Cargo" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Cargo" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Cargo}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="White"
-                       Placeholder="Telefono" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Telefono" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Telefono}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="White"
-                       Placeholder="Correo" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Correo" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Correo}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>                
-            <Entry TextColor="White"
-                       Placeholder="Dirección" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Dirección" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Direccion}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="White"
-                       Placeholder="Dirección" PlaceholderColor="Silver"
+            <Entry TextColor="{DynamicResource mainLabel}"
+                       Placeholder="Dirección" PlaceholderColor="{DynamicResource mainLabel}"
                        Text="{Binding Direccion2}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,3"/>

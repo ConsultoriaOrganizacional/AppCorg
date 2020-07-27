@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="QRManager.Views.LoginPage"
+             BackgroundColor= "{DynamicResource background}"   
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -34,18 +35,17 @@
                         Keyboard="Email"
                         Margin="0,20"
                         Text="{Binding Email, Mode=TwoWay}"
-                        TextColor="White"
+                        TextColor="{DynamicResource mainLabel}"
                         Placeholder="Ingresa tu correo"
-                        PlaceholderColor="White"     
-                        >
+                        PlaceholderColor="{DynamicResource mainLabel}">
                     </Entry>
                     <Entry
                         IsPassword="True"
                         Text="{Binding Password, Mode=TwoWay}"
-                        TextColor="White"
+                        TextColor="{DynamicResource mainLabel}"
                         Placeholder="Ingresa tu contraseña"
-                        PlaceholderColor="White">
-                    </Entry>
+                        PlaceholderColor="{DynamicResource mainLabel}">
+                     </Entry>
                     <StackLayout
                         Orientation="Horizontal">
                         <Label Margin="0,5" VerticalOptions="Center" Text="Recordar Información" TextColor="White">
@@ -64,7 +64,7 @@
                             Margin="0,30"
                             HorizontalOptions="Center"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                            Text="Ingresar"
+                            Text="   Ingresar   "
                             TextColor="White">
                     </Button>
                     <StackLayout

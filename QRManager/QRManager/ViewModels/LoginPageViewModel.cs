@@ -97,7 +97,7 @@ namespace QRManager.ViewModels
         #region Commands
         public ICommand ClickCommand => new Command<string>((url) =>
         {
-            
+            UserDialogs.Instance.ShowLoading();
             Device.OpenUri(new System.Uri(url));
         }
         );
@@ -114,11 +114,11 @@ namespace QRManager.ViewModels
     }
         public void Login1(string username, string password)
         {
-            
+            UserDialogs.Instance.ShowLoading();
             // We are using the RestSharp library which provides many useful
             // methods and helpers when dealing with REST.
             // We first create the request and add the necessary parameters
-            
+
             var client = new RestClient("https://corgqr.herokuapp.com");
             var request = new RestRequest("/users/login", Method.POST);
             var yourobject = new User {
@@ -139,8 +139,8 @@ namespace QRManager.ViewModels
                 IRestResponse response = client.Execute(request);
                 LoginToken token = JsonConvert.DeserializeObject<LoginToken>(response.Content);
                 if (token.token != null)
-                { 
-                
+                {
+                    UserDialogs.Instance.ShowLoading();
                     Application.Current.Properties["token"] = token.token;
                     GetUserData(token.token);
                    
@@ -148,12 +148,14 @@ namespace QRManager.ViewModels
                 else
                 {
                     Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
+                    UserDialogs.Instance.HideLoading();
                     return;
                 };
             }
             catch {
 
                 Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
+                UserDialogs.Instance.HideLoading();
                 return;
 
             }
@@ -170,7 +172,7 @@ namespace QRManager.ViewModels
 
         public async void GetUserData(string token)
         {
-           
+            UserDialogs.Instance.ShowLoading();
             var client = new RestClient("https://corgqr.herokuapp.com");
             var request = new RestRequest("/users/me", Method.GET);
             request.AddHeader("Authorization", "Bearer "+token);
@@ -186,7 +188,7 @@ namespace QRManager.ViewModels
             // Finally, we navigate the user the the Orders page
             
             MainViewModel.GetInstance().QRGenerator = new QRGeneratorViewModel();
-           
+            UserDialogs.Instance.HideLoading();
             await Application.Current.MainPage.Navigation.PushAsync(new QRGeneratorPage(dataUser));
            
         }
