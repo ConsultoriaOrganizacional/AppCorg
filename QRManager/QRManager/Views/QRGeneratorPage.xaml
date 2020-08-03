@@ -20,38 +20,38 @@
 
             <Image Grid.Row="0" Source="Logoblanco.png" WidthRequest="140" HeightRequest="150" Margin="0"/>
             <StackLayout Grid.Row="1" Padding="30,0">
-                <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Nombre" PlaceholderColor="{DynamicResource mainLabel}"
+                    <Entry TextColor="White"
+                       Placeholder="Nombre" PlaceholderColor="White"
                        Text="{Binding Nombre}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start"
                        Margin="0,5"/>
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Compañia" PlaceholderColor="{DynamicResource mainLabel}"
+                    <Entry TextColor="White"
+                       Placeholder="Compañia" PlaceholderColor="White"
                        Text="{Binding Compañia}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Cargo" PlaceholderColor="{DynamicResource mainLabel}"
+                    <Entry TextColor="White"
+                       Placeholder="Cargo" PlaceholderColor="White"
                        Text="{Binding Cargo}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Telefono" PlaceholderColor="{DynamicResource mainLabel}"
+                    <Entry TextColor="White"
+                       Placeholder="Telefono" PlaceholderColor="White"
                        Text="{Binding Telefono}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Correo" PlaceholderColor="{DynamicResource mainLabel}"
+                    <Entry TextColor="White"
+                       Placeholder="Correo" PlaceholderColor="White"
                        Text="{Binding Correo}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
-                       Margin="0,2"/>                
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Dirección" PlaceholderColor="{DynamicResource mainLabel}"
+                       Margin="0,2"/>
+                    <Entry TextColor="White"
+                       Placeholder="Dirección" PlaceholderColor="White"
                        Text="{Binding Direccion}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,2"/>
-            <Entry TextColor="{DynamicResource mainLabel}"
-                       Placeholder="Dirección" PlaceholderColor="{DynamicResource mainLabel}"
+            <Entry TextColor="White"
+                       Placeholder="Dirección" PlaceholderColor="White"
                        Text="{Binding Direccion2}"
                        Keyboard="Text" FontSize="18" HorizontalTextAlignment="Start" 
                        Margin="0,3"/>

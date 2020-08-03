@@ -21,9 +21,6 @@ namespace QRManager.ViewModels
         private bool isRunning;
         private bool isEnabled;
         private bool isVisible;
-
-
-        #endregion
         public class LoginToken
         {
             public DataUser DataUser { get; set; }
@@ -48,6 +45,7 @@ namespace QRManager.ViewModels
             public string nota { get; set; }
 
         }
+        #endregion 
         #region Properties
         public string Email
         {
@@ -65,8 +63,14 @@ namespace QRManager.ViewModels
         }
         public bool IsRunning
         {
-            get { return this.isRunning; }
-            set { SetValue(ref this.isRunning, value); }
+            get 
+            {
+                return this.isRunning; 
+            }
+            set 
+            { 
+                SetValue(ref this.isRunning, value); 
+            }
         }
         public bool IsRemembered
         {
@@ -86,9 +90,6 @@ namespace QRManager.ViewModels
         #region Constructor
         public LoginPageViewModel()
         {
-            this.IsRunning = true;
-            this.IsRemembered = true;
-            this.IsEnabled = true;
             Email = QRManager.Utils.Settings.LastUsedEmail;
             Password = QRManager.Utils.Settings.LastPasword;
         }
@@ -97,8 +98,7 @@ namespace QRManager.ViewModels
         #region Commands
         public ICommand ClickCommand => new Command<string>((url) =>
         {
-            UserDialogs.Instance.ShowLoading();
-            Device.OpenUri(new System.Uri(url));
+           Device.OpenUri(new System.Uri(url));
         }
         );
 
@@ -106,7 +106,7 @@ namespace QRManager.ViewModels
         {
         get
         {
-                this.IsRunning = true;
+                IsRemembered = true;
                 this.IsEnabled = true;
                 this.IsVisible = true;
                 return new RelayCommand(Login);
@@ -114,6 +114,8 @@ namespace QRManager.ViewModels
     }
         public void Login1(string username, string password)
         {
+            this.isRunning = true;
+            this.isVisible = true;
             UserDialogs.Instance.ShowLoading();
             // We are using the RestSharp library which provides many useful
             // methods and helpers when dealing with REST.
@@ -135,11 +137,15 @@ namespace QRManager.ViewModels
           
             try
             {
-                UserDialogs.Instance.ShowLoading();
+                this.IsRunning = true;
+                this.isVisible = true;
+                UserDialogs.Instance.ShowLoading();                    
                 IRestResponse response = client.Execute(request);
                 LoginToken token = JsonConvert.DeserializeObject<LoginToken>(response.Content);
                 if (token.token != null)
                 {
+                    this.isRunning = true;
+                    this.isVisible = true;
                     UserDialogs.Instance.ShowLoading();
                     Application.Current.Properties["token"] = token.token;
                     GetUserData(token.token);
@@ -148,14 +154,18 @@ namespace QRManager.ViewModels
                 else
                 {
                     Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
-                    UserDialogs.Instance.HideLoading();
+                    this.IsRunning = false;
+                    this.IsEnabled = true;
+                    this.isVisible = true;
                     return;
                 };
             }
             catch {
 
                 Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
-                UserDialogs.Instance.HideLoading();
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                this.isVisible = true;
                 return;
 
             }
@@ -172,7 +182,7 @@ namespace QRManager.ViewModels
 
         public async void GetUserData(string token)
         {
-            UserDialogs.Instance.ShowLoading();
+            
             var client = new RestClient("https://corgqr.herokuapp.com");
             var request = new RestRequest("/users/me", Method.GET);
             request.AddHeader("Authorization", "Bearer "+token);
@@ -182,12 +192,12 @@ namespace QRManager.ViewModels
 
             DataUser dataUser = JsonConvert.DeserializeObject<DataUser>(response.Content);
 
-
-
-
             // Finally, we navigate the user the the Orders page
             
             MainViewModel.GetInstance().QRGenerator = new QRGeneratorViewModel();
+            this.IsRunning = false;
+            this.IsEnabled = true;
+            this.isVisible = true;
             UserDialogs.Instance.HideLoading();
             await Application.Current.MainPage.Navigation.PushAsync(new QRGeneratorPage(dataUser));
            
@@ -201,7 +211,6 @@ namespace QRManager.ViewModels
                     "Error",
                     "El Correo es necesario",
                     "Accept");
-                this.Password = "123456aA";
                 return;
             }
             if (String.IsNullOrEmpty(this.Password))
@@ -212,8 +221,9 @@ namespace QRManager.ViewModels
                     "Accept");
                 return;
             }
-        
-          
+            this.isRunning = true;
+            this.IsEnabled = false;
+            this.isVisible = false;
             if (this.email.Contains("@consultoriaorganizacional.com"))
             {
 
@@ -223,10 +233,11 @@ namespace QRManager.ViewModels
             {
                 Login1(this.Email+ "@consultoriaorganizacional.com", this.Password);
             }           
-            this.IsRunning = true;
+
+            this.IsRunning = false;
             this.IsEnabled = true;
             this.isVisible = true;
-
+            UserDialogs.Instance.HideLoading();
             this.Email = QRManager.Utils.Settings.LastUsedEmail;
             this.Password = QRManager.Utils.Settings.LastPasword;
         }

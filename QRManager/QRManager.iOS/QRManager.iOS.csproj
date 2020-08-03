@@ -231,25 +231,63 @@
     <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\logo.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo58.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\logo.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo80 1.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo120 1.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo40.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo20.png" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Webp.net-resizeimage.png" />
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-568h%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcon.appiconset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo80 1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo120 1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Logo20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Webp.net-resizeimage.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\youtube.png" />
