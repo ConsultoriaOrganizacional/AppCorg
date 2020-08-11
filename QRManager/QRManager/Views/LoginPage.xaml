@@ -14,12 +14,7 @@
             <Image Source="wallpaper.png" Aspect="AspectFill"/>
 
             <BoxView Color="#CECECE" Opacity="0"/>
-            <ActivityIndicator
-                            IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                            Color="Red"
-                            VerticalOptions="Center">
-            </ActivityIndicator>
-            <Grid
+             <Grid
                 BindingContext="{Binding Login}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -58,6 +53,20 @@
                         <ActivityIndicator
                         IsRunning="{Binding IsRunning, Mode=TwoWay}">
                         </ActivityIndicator>
+                        <Label HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                     <Span Text="¿Olvido su contraseña?"
+                                      TextColor="White"
+                                      TextDecorations="Underline"
+                                           FontSize="15">              
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding RecoveryPasswordCommand}"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <Button  
                             BackgroundColor="Navy"
                             Command="{Binding LoginCommand}"
@@ -69,7 +78,8 @@
                             Text="   Ingresar   "
                             TextColor="White">
                     </Button>
-                    <StackLayout
+                     
+                        <StackLayout
                             Orientation="Horizontal"
                              HeightRequest="50"
                          Margin="0,40"

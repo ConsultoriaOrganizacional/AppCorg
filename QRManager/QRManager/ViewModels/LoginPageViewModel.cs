@@ -111,7 +111,20 @@ namespace QRManager.ViewModels
                 this.IsVisible = true;
                 return new RelayCommand(Login);
         }
-    }
+            
+        }
+        public ICommand RecoveryPasswordCommand
+        {
+            get
+            {
+               
+                return new RelayCommand(Recovery);
+            }
+            set
+            {
+
+            }
+        }
         public void Login1(string username, string password)
         {
             this.isRunning = true;
@@ -240,6 +253,10 @@ namespace QRManager.ViewModels
             UserDialogs.Instance.HideLoading();
             this.Email = QRManager.Utils.Settings.LastUsedEmail;
             this.Password = QRManager.Utils.Settings.LastPasword;
+        }
+        private async void Recovery()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RecoveryPasswordPage());
         }
         #endregion
     }

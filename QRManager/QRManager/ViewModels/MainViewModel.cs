@@ -13,6 +13,15 @@
         {
             get; set;
         }
+
+        public RecoveryPasswordViewModel RecoPassword
+        {
+            get; set;
+        }
+        public ChangePasswordViewModel ChangePassword
+        {
+            get; set;
+        }
         #endregion
         #region Constructors
         public MainViewModel()

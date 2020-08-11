@@ -259,9 +259,6 @@
     <AndroidResource Include="Resources\drawable\youtube.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\linkedin.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\linkedin.png" />
   </ItemGroup>
   <ItemGroup>
