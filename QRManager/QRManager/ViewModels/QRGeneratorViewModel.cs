@@ -125,9 +125,6 @@ namespace QRManager.ViewModels
         }
       
 
-
-
-
         private string nota;
         public string Nota
         {

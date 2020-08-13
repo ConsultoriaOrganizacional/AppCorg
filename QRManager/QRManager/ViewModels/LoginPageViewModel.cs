@@ -256,6 +256,7 @@ namespace QRManager.ViewModels
         }
         private async void Recovery()
         {
+            MainViewModel.GetInstance().RecoPassword = new RecoveryPasswordViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RecoveryPasswordPage());
         }
         #endregion
