@@ -51,7 +51,7 @@
                         </Switch>
                     </StackLayout>
                         <ActivityIndicator
-                        IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                        IsRunning="{Binding IsBusy}">
                         </ActivityIndicator>
                         <Label HorizontalOptions="Center">
                             <Label.FormattedText>

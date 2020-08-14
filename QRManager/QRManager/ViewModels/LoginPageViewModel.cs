@@ -9,6 +9,7 @@ using RestSharp;
 using Newtonsoft.Json;
 using Acr.UserDialogs;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace QRManager.ViewModels
 {
@@ -18,7 +19,7 @@ namespace QRManager.ViewModels
 
         private string email;
         private string password;
-        private bool isRunning;
+        bool isBusy = false;
         private bool isEnabled;
         private bool isVisible;
         public class LoginToken
@@ -61,17 +62,7 @@ namespace QRManager.ViewModels
             QRManager.Utils.Settings.LastPasword = value;
             }
         }
-        public bool IsRunning
-        {
-            get 
-            {
-                return this.isRunning; 
-            }
-            set 
-            { 
-                SetValue(ref this.isRunning, value); 
-            }
-        }
+
         public bool IsRemembered
         {
             get; set;
@@ -93,8 +84,15 @@ namespace QRManager.ViewModels
             Email = QRManager.Utils.Settings.LastUsedEmail;
             Password = QRManager.Utils.Settings.LastPasword;
         }
+        public bool IsBusy
+
+        {
+            get { return isBusy; }
+
+            set { SetProperty(ref isBusy, value); }
+
+        }
         #endregion
-        
         #region Commands
         public ICommand ClickCommand => new Command<string>((url) =>
         {
@@ -127,75 +125,78 @@ namespace QRManager.ViewModels
         }
         public void Login1(string username, string password)
         {
-            this.isRunning = true;
-            this.isVisible = true;
-            UserDialogs.Instance.ShowLoading();
-            // We are using the RestSharp library which provides many useful
-            // methods and helpers when dealing with REST.
-            // We first create the request and add the necessary parameters
+            Task.Run(() =>
 
-            var client = new RestClient("https://corgqr.herokuapp.com");
-            var request = new RestRequest("/users/login", Method.POST);
-            var yourobject = new User {
-                email = username,
-                password = password
-            };    
-           
-            var json = JsonConvert.SerializeObject(yourobject);
-            request.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
-
-
-            // We execute the request and capture the response
-            // in a variable called `response`
-          
+            {
             try
             {
-                this.IsRunning = true;
-                this.isVisible = true;
-                UserDialogs.Instance.ShowLoading();                    
-                IRestResponse response = client.Execute(request);
-                LoginToken token = JsonConvert.DeserializeObject<LoginToken>(response.Content);
-                if (token.token != null)
+                var client = new RestClient("https://corgqr.herokuapp.com");
+                    this.IsEnabled = false;
+                    this.isVisible = false;
+                    var request = new RestRequest("/users/login", Method.POST);
+                var yourobject = new User
                 {
-                    this.isRunning = true;
-                    this.isVisible = true;
-                    UserDialogs.Instance.ShowLoading();
-                    Application.Current.Properties["token"] = token.token;
-                    GetUserData(token.token);
-                   
-                }
-                else
-                {
-                    Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "Aceptar");
-                    this.IsRunning = false;
-                    this.IsEnabled = true;
-                    this.isVisible = true;
-                    return;
+                    email = username,
+                    password = password
                 };
-            }
-            catch {
+                var json = JsonConvert.SerializeObject(yourobject);
+                request.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
+                
+                    Device.BeginInvokeOnMainThread(() => IsBusy = true);
+                    IRestResponse response = client.Execute(request);
+                    HttpStatusCode statusCode = response.StatusCode;
+                    LoginToken token = JsonConvert.DeserializeObject<LoginToken>(response.Content);
+                    if (token.token != null)
+                    {
+                        Device.BeginInvokeOnMainThread(() => Application.Current.Properties["token"] = token.token);
+                        GetUserData(token.token);
 
-                Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "Aceptar");
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                this.isVisible = true;
-                return;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() => App.Current.MainPage.DisplayAlert
+                        ("Oh No!",
+                        "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.",
+                        "Aceptar"));
+                        this.IsEnabled = true;
+                        this.isVisible = true;
+                        return;
+                    };
+                }
+                catch
+                {
 
-            }
-            // Using the Newtonsoft.Json library we deserialaize the string into an object,
-            // we have created a LoginToken class that will capture the keys we need
-            
+                    Device.BeginInvokeOnMainThread(() => App.Current.MainPage.DisplayAlert(
+                        "Oh No!",
+                        "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.",
+                        "Aceptar"));
+                        this.IsEnabled = true;
+                        this.isVisible = true;
+                        return;
 
-            // We check to see if we received an `id_token` and if we did make a secondary call
-            // to get the user data. If we did not receive an `id_token` we can safely assume
-            // that the authentication failed so we display an error message telling the user
-            // to try again.
-          
+                }
+                finally
+                {
+                    Device.BeginInvokeOnMainThread(() => IsBusy = false);
+                }
+
+                // Using the Newtonsoft.Json library we deserialaize the string into an object,
+                // we have created a LoginToken class that will capture the keys we need
+
+
+                // We check to see if we received an `id_token` and if we did make a secondary call
+                // to get the user data. If we did not receive an `id_token` we can safely assume
+                // that the authentication failed so we display an error message telling the user
+                // to try again.
+
+            });
+
         }
 
-        public async void GetUserData(string token)
-        {
-            
+        public  void GetUserData(string token)
+        {    
+
+           
             var client = new RestClient("https://corgqr.herokuapp.com");
             var request = new RestRequest("/users/me", Method.GET);
             request.AddHeader("Authorization", "Bearer "+token);
@@ -208,16 +209,17 @@ namespace QRManager.ViewModels
             // Finally, we navigate the user the the Orders page
             
             MainViewModel.GetInstance().QRGenerator = new QRGeneratorViewModel();
-            this.IsRunning = false;
+           
             this.IsEnabled = true;
             this.isVisible = true;
-            UserDialogs.Instance.HideLoading();
-            await Application.Current.MainPage.Navigation.PushAsync(new QRGeneratorPage(dataUser));
-           
+
+            Device.BeginInvokeOnMainThread(() => App.Current.MainPage.Navigation.PushAsync(new QRGeneratorPage(dataUser)));
+        
         }
+
         private async void Login()
         {
-        
+            
             if (String.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -234,7 +236,7 @@ namespace QRManager.ViewModels
                     "Accept");
                 return;
             }
-            this.isRunning = true;
+           
             this.IsEnabled = false;
             this.isVisible = false;
             if (this.email.Contains("@consultoriaorganizacional.com"))
@@ -247,10 +249,10 @@ namespace QRManager.ViewModels
                 Login1(this.Email+ "@consultoriaorganizacional.com", this.Password);
             }           
 
-            this.IsRunning = false;
+           
             this.IsEnabled = true;
             this.isVisible = true;
-            UserDialogs.Instance.HideLoading();
+            
             this.Email = QRManager.Utils.Settings.LastUsedEmail;
             this.Password = QRManager.Utils.Settings.LastPasword;
         }
