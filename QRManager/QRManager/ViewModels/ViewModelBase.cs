@@ -15,14 +15,7 @@
             get { return icon; }
             set { SetProperty(ref icon, value); }
         }
-        public bool IsBusy
-        {
-            get { return isBusy; }
-            set
-            {
-                SetProperty(ref isBusy, value);
-            }
-        }
+        
         public string Title
         {
             get { return title; }
@@ -30,7 +23,7 @@
         }
 
         private string icon = string.Empty;
-        private bool isBusy;
+        
         private string title = string.Empty;
 
         /// <param name="propertyName">Property name.</param>

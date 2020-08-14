@@ -166,7 +166,7 @@ namespace QRManager.ViewModels
                 }
                 else
                 {
-                    Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
+                    Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "Aceptar");
                     this.IsRunning = false;
                     this.IsEnabled = true;
                     this.isVisible = true;
@@ -175,7 +175,7 @@ namespace QRManager.ViewModels
             }
             catch {
 
-                Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "OK");
+                Application.Current.MainPage.DisplayAlert("Oh No!", "Las credenciales ingresadas no son correctas, por favor validalos nuevamente.", "Aceptar");
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 this.isVisible = true;
