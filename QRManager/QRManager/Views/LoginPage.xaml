@@ -30,14 +30,14 @@
                         Keyboard="Email"
                         Margin="0,20"
                         Text="{Binding Email, Mode=TwoWay}"
-                        TextColor="White"
+                        TextColor="{DynamicResource mainLabel}"
                         Placeholder="Ingresa tu correo"
                         PlaceholderColor="White">
                     </Entry>
                     <Entry
                         IsPassword="True"
                         Text="{Binding Password, Mode=TwoWay}"
-                        TextColor="White"
+                        TextColor="{DynamicResource mainLabel}"
                         Placeholder="Ingresa tu contraseña"
                         PlaceholderColor="White">
                      </Entry>

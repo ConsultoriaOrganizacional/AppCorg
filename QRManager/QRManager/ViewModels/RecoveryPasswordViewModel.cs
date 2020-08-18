@@ -69,24 +69,29 @@ namespace QRManager.ViewModels
         public  void RecoveryPassowrd(string email)
         {
 
-         
+            
             var client = new RestClient("https://corgqr.herokuapp.com");
-            var request = new RestRequest("/forgot", Method.POST);
-            this.isEnabled = false;
+            this.IsEnabled = false;
             this.isVisible = false;
+            var request = new RestRequest("/forgot", Method.POST);
+            
             var yourobject = new User
             {
                 email = email
 
             };
-
+         
             var json = JsonConvert.SerializeObject(yourobject);
             request.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
             try
             {
+                this.isEnabled = false;
+                this.isVisible = false;
                 IRestResponse response = client.Execute(request);
                 HttpStatusCode statusCode = response.StatusCode;
                 int numericStatusCode = (int)statusCode;
+                this.isEnabled = false;
+                this.isVisible = false;
 
                 if (numericStatusCode == 200)
                 {
@@ -136,7 +141,7 @@ namespace QRManager.ViewModels
 
         }
 
-        private void Login(string emailtt)
+        private void Login(string emailtt ) 
         {
             Task.Run(() =>
             {
@@ -174,6 +179,7 @@ namespace QRManager.ViewModels
                         Device.BeginInvokeOnMainThread(() => App.Current.MainPage.DisplayAlert("Error",
                         "El correo indicado no existe en la base de datos, por favor verifique que este correcto.",
                         "Aceptar"));
+                       this.Email = string.Empty;
 
                     }
                    
